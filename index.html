@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="color-scheme" content="light dark">
+  <title>🔥 Heater 🔥</title>
+  <style>
+button {
+  max-width: 10rem;
+  max-height: 10rem;
+  width: 80vmin;
+  height: 80vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: 2px solid;
+  border-radius: 50%;
+  font: inherit;
+  color: inherit;
+}
+body, html {
+  text-align: center;
+  font-family: system-ui, sans-serif;
+  color-scheme: light dark;
+}
+
+  </style>
+  <script data-stats-config="beacon=https://collect.easrng.workers.dev&site=heater&loadEvent=1">
+  !((e,a,s,r,n,g)=>{e.head.append(a=Object.assign(e.createElement('script'),{src:'https://easrng.github.io/stats/stats.js',async:!0}));a.onerror=o=>g.map(z=>z.e(o),g.push=x=>r.reject(o));s[n]=new Proxy({},{get:(o,f)=>f=='_q'?g:(...a)=>new r((c,e)=>g.push({f,a,c,e}))})})(document,0,window,Promise,"stats",[]);
+  </script>
+</head>
+<body>
+  <h1>🔥 Heater 🔥</h1>
+  <div>Made by <a href="https://easrng.net">easrng</a></div>
+  <button id="toggle">Turn On</button>
+  <script>
+let threads=[]
+function start(){
+  for(let i=0;i<navigator.hardwareConcurrency;i++)threads.push(new Worker("data:text/javascript;base64,KGFzeW5jKCk9Pntjb25zdCB7aW5zdGFuY2U6e2V4cG9ydHM6e21lbW9yeTp7YnVmZmVyOmJ1ZmZlcn0sbWFpbn19fSA9IGF3YWl0IFdlYkFzc2VtYmx5Lmluc3RhbnRpYXRlKGF3YWl0KGF3YWl0IGZldGNoKCJkYXRhOmFwcGxpY2F0aW9uL3dhc207YmFzZTY0LEFHRnpiUUVBQUFBQkJBRmdBQUFEQWdFQUJRTUJBQUVIRVFJR2JXVnRiM0o1QWdBRWJXRnBiZ0FBQ2tJQlFBRUNmd05BQTBBZ0FDQUFLQUlBSUFCQkJHb2lBU2dDQUhNMkFnQWdBQ0FCSVFCQitQOERTUTBBQ3lBQklRQWdBQ0FBS0FJQVFRQW9BZ0J6TmdJQUN3c0FKZ1J1WVcxbEFRY0JBQVJ0WVdsdUFnc0JBQUlBQW13d0FRSnNNUVlKQVFBR2JXVnRiM0o1IikpLmFycmF5QnVmZmVyKCkpO2NvbnN0IG1lbW9yeSA9IG5ldyBVaW50MzJBcnJheShidWZmZXIpO2NyeXB0by5nZXRSYW5kb21WYWx1ZXMobWVtb3J5KTt3aGlsZSgxKW1haW4oKX0pKCk="))
+}
+function stop(){
+  while(threads.length>0) threads.pop().terminate()
+}
+let running=false;
+toggle.onclick=function (){
+  if(running){
+    stop()
+    toggle.textContent="Turn On"
+  }else{
+    start()
+    toggle.textContent="Turn Off"
+  }
+  running=!running
+}
+  </script>
+</body>
+</html>
